@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#86c8e8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Урод — школьник на питбайке</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <canvas id="game" aria-label="Игровое поле"></canvas>
+  <header id="hud" class="hidden">
+    <div class="stats">
+      <span>★ <b id="score">0</b></span><span>🏆 <b id="best">0</b></span><span>ГАЗЯВА <b id="wallet">0</b></span>
+    </div>
+    <button id="sound" class="sound" aria-label="Включить или выключить звук">♫</button>
+  </header>
+  <div id="wheelie-gauge" class="hidden" data-level="safe" aria-label="Угол вили"><div class="wheelie-head"><b>УГОЛ ВИЛИ</b><strong id="wheelie-value">0°</strong></div><div class="wheelie-track"><span id="wheelie-fill"></span><i></i></div><small>КРИТИЧНО: 80°</small></div>
+  <div id="speedometer" class="hidden"><small>СКОРОСТЬ</small><strong><span id="speed">0</span><i> км/ч</i></strong><div class="meter"><span id="meter-fill"></span></div></div>
+  <nav id="controls" class="hidden" aria-label="Игровое управление">
+    <div class="control-side"><button class="control brake" data-hold="brake">ТОРМОЗ</button><button class="control gas" data-hold="gas">ГАЗ</button></div>
+    <div class="control-side"><button class="control wheelie" data-hold="wheelie">ВИЛИ</button><button class="control jump" data-tap="jump">ПРЫЖОК</button></div>
+  </nav>
+  <section id="menu" class="screen">
+    <div class="panel">
+      <div class="logo">УРОД</div><p class="tagline">Школьник на питбайке</p>
+      <p class="description">Посёлок, Жигули и легендарная ГАЗЯВА. Постарайся не разложиться.</p>
+      <p class="menu-info">Рекорд: <b id="menu-best">0</b>　ГАЗЯВА: <b id="menu-wallet">0</b></p>
+      <div class="menu-tabs"><button id="tab-play" class="menu-tab active">ИГРАТЬ</button><button id="tab-shop" class="menu-tab">МАГАЗИН</button><button id="tab-settings" class="menu-tab">НАСТРОЙКИ</button></div>
+      <p class="help">Удерживай ГАЗ для разгона · ПРЫЖОК — через машины<br>ВИЛИ приносит бонусы, но не передерживай!</p>
+    </div>
+  </section>
+  <section id="gameover" class="screen hidden">
+    <div class="panel"><div class="logo small-logo">УРОД</div><h1>ТЫ РАЗЛОЖИЛСЯ</h1><p>Счёт: <b id="final-score">0</b></p><p>Рекорд: <b id="final-best">0</b></p>
+      <button id="restart" class="primary">ЗАНОВО</button><button id="gameover-shop" class="secondary">МАГАЗИН СКИНОВ</button>
+    </div>
+  </section>
+  <section id="shop" class="screen hidden"><div class="panel shop-panel"><h1>МАГАЗИН СКИНОВ</h1><p>Твоя ГАЗЯВА: <b id="shop-wallet">0</b></p><div id="skin-list"></div><button id="close-shop" class="secondary">НАЗАД</button></div></section>
+  <section id="settings" class="screen hidden"><div class="panel"><div class="logo small-logo">УРОД</div><h1>НАСТРОЙКИ</h1><p class="description">Настрой игру под себя.</p><button id="settings-sound" class="secondary">ЗВУК: ВЫКЛ</button><p class="help">Управление: газ — разгон, тормоз — замедление, вили — поднять переднее колесо, прыжок — перепрыгнуть препятствие.</p><button id="settings-back" class="secondary">НАЗАД</button></div></section>
+  <div id="toast" role="status" aria-live="polite"></div>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
